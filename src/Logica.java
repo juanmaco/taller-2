@@ -6,9 +6,11 @@ import processing.core.PImage;
 public class Logica {
 	public PApplet app;
 	private int pantalla = 0;
-	public PImage inicio, ins, ins2, fondo, person;
+	public PImage inicio, ins, ins2, fondo, person,runaf,runaa;
 	public Personaje per;
-	public ArrayList<Enemigo>enemigos;
+	public ArrayList<Rfuego> rf;
+	public ArrayList<Ragua> ra;
+	
 
 	public Logica(PApplet app) {
 		this.app = app;
@@ -17,8 +19,17 @@ public class Logica {
 		ins2 = app.loadImage("../data/ins2.png");
 		fondo = app.loadImage("../data/fondoj.png");
 		person = app.loadImage("../data/brujo.png");
+		runaf = app.loadImage("../data/rfue.png");
+		runaa = app.loadImage("../data/ragua.png");
 		per = new Personaje(app, 0, 0, person);
-		enemigos=new ArrayList<Enemigo>();
+		rf= new ArrayList<Rfuego>();
+		for(int i=0; i<4; i++){
+			rf.add(new Rfuego(app,app.random(10,879),app.random(113,664),runaf));
+		}
+		ra= new ArrayList<Ragua>();
+		for(int i=0; i<2; i++){
+			ra.add(new Ragua(app,app.random(10,879),app.random(113,664),runaa));
+		}
 	}
 
 	public void pintar() {
@@ -35,9 +46,14 @@ public class Logica {
 		case 3:
 			app.imageMode(app.CORNER);
 			app.image(fondo, 0, 0);
+			for(int i=0; i<4; i++){
+				rf.get(i).pintar();
+			}
+			for(int i=0; i<2; i++){
+				ra.get(i).pintar();
+			}
 			app.imageMode(app.CENTER);
 			per.pintar();
-			
 		}
 	}
 
