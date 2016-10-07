@@ -6,12 +6,14 @@ import processing.core.PImage;
 public class Logica {
 	public PApplet app;
 	private int pantalla = 0;
-	public PImage inicio, ins, ins2, fondo, person,runaf,runaa;
+	public PImage inicio, ins, ins2, fondo, person,runaf,runaa,rrayo,robs,rnat;
 	public Personaje per;
 	public ArrayList<Rfuego> rf;
 	public ArrayList<Ragua> ra;
+	public ArrayList<Rrayo> rr;
+	public ArrayList<Roscura> ro;
+	public ArrayList<Rnat> rn;
 	
-
 	public Logica(PApplet app) {
 		this.app = app;
 		inicio = app.loadImage("../data/fondo.png");
@@ -21,6 +23,9 @@ public class Logica {
 		person = app.loadImage("../data/brujo.png");
 		runaf = app.loadImage("../data/rfue.png");
 		runaa = app.loadImage("../data/ragua.png");
+		rrayo = app.loadImage("../data/rrayo.png");
+		robs = app.loadImage("../data/robs.png");
+		rnat = app.loadImage("../data/rnat.png");
 		per = new Personaje(app, 0, 0, person);
 		rf= new ArrayList<Rfuego>();
 		for(int i=0; i<4; i++){
@@ -29,6 +34,18 @@ public class Logica {
 		ra= new ArrayList<Ragua>();
 		for(int i=0; i<2; i++){
 			ra.add(new Ragua(app,app.random(10,879),app.random(113,664),runaa));
+		}
+		rr= new ArrayList<Rrayo>();
+		for(int i=0; i<3; i++){
+			rr.add(new Rrayo(app,app.random(10,879),app.random(113,664),rrayo));
+		}
+		ro= new ArrayList<Roscura>();
+		for(int i=0; i<1; i++){
+			ro.add(new Roscura(app,app.random(10,879),app.random(113,664),robs));
+		}
+		rn= new ArrayList<Rnat>();
+		for(int i=0; i<2; i++){
+			rn.add(new Rnat(app,app.random(10,879),app.random(113,664),rnat));
 		}
 	}
 
@@ -52,6 +69,15 @@ public class Logica {
 			for(int i=0; i<2; i++){
 				ra.get(i).pintar();
 			}
+			for(int i=0; i<3; i++){
+				rr.get(i).pintar();
+			}
+			for(int i=0; i<1; i++){
+				ro.get(i).pintar();
+			}
+			for(int i=0; i<2; i++){
+				rn.get(i).pintar();
+			}
 			app.imageMode(app.CENTER);
 			per.pintar();
 		}
@@ -59,6 +85,9 @@ public class Logica {
 
 	public void mover() {
 		per.mover();
+		for(int i=0; i<2; i++){
+			ra.get(i).mover();
+		}
 	}
 
 	public void click() {
