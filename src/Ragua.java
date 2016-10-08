@@ -18,12 +18,20 @@ public class Ragua extends Runa{
 	}
 
 	@Override
-	//no usar aqui :v
+	
 	public void mover() {
-		direccion= new PVector(app.mouseX-x,app.mouseY-y);
-		direccion.normalize();
-		x= x+direccion.x*vel;
-		y= y+direccion.y*vel;
+		for(int i=0; i<4; i++){
+			x+=speedX;
+		    y+=speedY;
+		    if (x<= 50 || x>=879) {
+		      speedX*=-1;
+		    }
+		    if (y<=150 || y>=670) {
+		      speedY*=-1;
+			
+		}
+
+	}
 	}
 
 }

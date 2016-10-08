@@ -30,5 +30,10 @@ private PApplet app;
 		}
 		
 	}
-
+public float getx(){
+	return x;
+}
+public float gety(){
+	return y;
+}
 }

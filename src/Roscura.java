@@ -17,8 +17,15 @@ public class Roscura extends Runa{
 
 	@Override
 	public void mover() {
-		direccion= new PVector(app.mouseX-x,app.mouseY-y);
+		x+=speedX;
+	    y+=speedY;
+	    if (x<= 50 || x>=879) {
+	      speedX*=-1;
+	    }
+	    if (y<=150 || y>=670) {
+	      speedY*=-1;
 		
 	}
 
+}
 }
